@@ -17,21 +17,28 @@ export const GlobalStyled = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  /* font-size: 16px; */
   html{
     @media (max-width: 1080px){
-      /* 16x0,9375=15px; */
       font-size: 93.75%; 
     }
 
     @media (max-width: 720px){
-      /* font-size: 87.5%; 16x0,875=14px */
     }
   }
 
   body{
     background: var(---background);
-     -webkit-font-smoothing: antialiased; /*fonte mais nítida */
+     -webkit-font-smoothing: antialiased;
+  }
+
+  /* Preciso colocar input, textarea, button pq eles tem um font-family particular e não respeitam o body */
+  body, input, textarea, button{
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+
+  h1,h2,h3,h4,h5,h6,strong{
+    font-weight: 600;
   }
 
   button{
