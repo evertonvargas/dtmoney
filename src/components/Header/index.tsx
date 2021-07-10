@@ -1,5 +1,5 @@
-// nomeimagemImg pra saber q é uma imagem e uso o import
 import logoImg from "../../assets/Logo.svg";
+
 import { Container, Content } from "./styles";
 
 export function Header() {
