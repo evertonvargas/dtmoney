@@ -4,6 +4,7 @@ import closeImg from "../../assets/Fechar.svg";
 import entradaImg from "../../assets/Entradas.svg";
 import saidaImg from "../../assets/Saidas.svg";
 import { FormEvent, useState } from "react";
+import { api } from "../../services/api";
 
 Modal.setAppElement("#root");
 
@@ -22,13 +23,15 @@ export function NewTransactionModal({
   const [type, setType] = useState("deposit");
 
   function handleSubmit(event: FormEvent){
-    console.log({
+    event.preventDefault()
+    const data={
       title,
       value,
       type,
       category
-    })
-    event.preventDefault()
+    };
+
+    api.post('transactions', data)
   }
 
   return (
