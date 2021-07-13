@@ -24,7 +24,7 @@ createServer({
           title: "Café do programador",
           type: 'withdraw',
           category: 'Dev',
-          amount: 6000,
+          amount: 15,
           createdAt: new Date('2021-07-14'),
         }
       ]

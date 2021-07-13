@@ -3,30 +3,32 @@ import { useState } from "react";
 import { Dashboard } from "./components/Dashboard";
 import { Header } from "./components/Header";
 import { NewTransactionModal } from "./components/NewTransactionModal";
+import { TransactionsProvider } from "./contexts/TransactionsContext";
 
-import { GlobalStyle } from "./styles/global"
+import { GlobalStyle } from "./styles/global";
 
 function App() {
-  const [isNewTransactionsModalOpen, setIsNewTransactionsModalOpen] = useState(false)
+  const [isNewTransactionsModalOpen, setIsNewTransactionsModalOpen] =
+    useState(false);
 
-  function handleOpenNewTransctions(){
-    setIsNewTransactionsModalOpen(true)
+  function handleOpenNewTransctions() {
+    setIsNewTransactionsModalOpen(true);
   }
 
-  function handleCloseNewTransctions(){
-    setIsNewTransactionsModalOpen(false)
+  function handleCloseNewTransctions() {
+    setIsNewTransactionsModalOpen(false);
   }
 
   return (
-    <>
-      <Header onOpenNewTransctionsModal={handleOpenNewTransctions}/>
+    <TransactionsProvider>
+      <Header onOpenNewTransctionsModal={handleOpenNewTransctions} />
       <Dashboard />
       <NewTransactionModal
-        isOpen={isNewTransactionsModalOpen} 
+        isOpen={isNewTransactionsModalOpen}
         onRequestClose={handleCloseNewTransctions}
       />
       <GlobalStyle />
-    </>
+    </TransactionsProvider>
   );
 }
 
