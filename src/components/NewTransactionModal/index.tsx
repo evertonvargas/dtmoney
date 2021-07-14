@@ -24,16 +24,23 @@ export function NewTransactionModal({isOpen,onRequestClose,}: NewTransctionModal
   const [category, setCategory] = useState("");
   const [type, setType] = useState("deposit");
 
-  function handleSubmit(event: FormEvent){
-    event.preventDefault()
+  async function handleSubmit(event: FormEvent){
+    event.preventDefault();
 
-    createTransaction({
+    // amount: value,
+    await createTransaction({
       title,
-      // amount: value,
       amount,
       category,
-      type
-    })
+      type,
+    });
+
+    setTitle('');
+    setAmount(0);
+    setCategory("");
+    setType('deposit')
+
+    onRequestClose();
   }
 
   return (
@@ -50,19 +57,19 @@ export function NewTransactionModal({isOpen,onRequestClose,}: NewTransctionModal
       >
         <img src={closeImg} alt="Fechar modal" />
       </button>
-      <Container onClick={handleSubmit}>
+      <Container onSubmit={handleSubmit}>
         <h2>Cadastrar Transação</h2>
         <input
           type="text"
           placeholder="Título"
           value={title}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={event => setTitle(event.target.value)}
         />
         <input
           type="number"
           placeholder="Valor"
           value={amount}
-          onChange={(event) => setAmount(Number(event.target.value))}
+          onChange={event => setAmount(Number(event.target.value))}
         />
         <TransactionTypeContainer>
           <RadioBox
@@ -88,7 +95,7 @@ export function NewTransactionModal({isOpen,onRequestClose,}: NewTransctionModal
         <input
           placeholder="Categoria"
           value={category}
-          onChange={(event) => setCategory(event.target.value)}
+          onChange={event => setCategory(event.target.value)}
         />
         <button type="submit">Cadastrar</button>
       </Container>
