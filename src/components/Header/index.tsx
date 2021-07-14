@@ -1,4 +1,5 @@
 import logoImg from "../../assets/Logo.svg";
+
 import { Container, Content } from "./styles";
 interface HeaderProps{
   onOpenNewTransctionsModal: () => void;
